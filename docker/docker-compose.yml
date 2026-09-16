@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    environment:
+      LLAMAMANAGER_CONFIG: /config/config.yaml
+      LLAMAMANAGER_AGENT_SOCKET: /run/llamamanager/agent.sock
+    volumes:
+      - /opt/llama/llamamanager:/config:ro
+      - /run/llamamanager:/run/llamamanager
+    ports:
+      - "8090:8090"
